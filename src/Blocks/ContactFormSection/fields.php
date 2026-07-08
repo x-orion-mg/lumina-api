@@ -1,0 +1,71 @@
+<?php
+
+acf_add_local_field_group([
+    'key'      => 'group_be_contact_form_section',
+    'title'    => 'Block - Contact Form Section',
+    'fields'   => [
+        [
+            'key'           => 'field_be_contact_form_section_tag',
+            'label'         => 'Tag',
+            'name'          => 'tag',
+            'type'          => 'text',
+            'instructions'  => 'Exemple : #Nous contacter',
+        ],
+        [
+            'key'           => 'field_be_contact_form_section_title',
+            'label'         => 'Titre',
+            'name'          => 'title',
+            'type'          => 'textarea',
+            'instructions' => 'Pour appliquer un effet de dégradé (gradient) à un texte, encadrez le mot ou l\'expression avec des crochets : [votre mot].',
+            'rows'          => 3,
+            'new_lines'     => 'br',
+        ],
+        [
+            'key'           => 'field_be_contact_form_section_description',
+            'label'         => 'Description',
+            'name'          => 'description',
+            'type'          => 'textarea',
+            'rows'          => 3,
+            'new_lines'     => 'br',
+        ],
+        [
+            'key'           => 'field_be_contact_form_section_form',
+            'label'         => 'Formulaire HubSpot',
+            'name'          => 'form',
+            'type'          => 'relationship',
+            'post_type'     => ['contact-form'],
+            'filters'       => ['search'],
+            'max'           => 1,
+            'return_format' => 'id',
+        ],
+        [
+            'key'           => 'field_be_contact_form_section_form_title',
+            'label'         => 'Titre du formulaire (optionnel)',
+            'name'          => 'form_title',
+            'type'          => 'text',
+        ],
+        [
+            'key'           => 'field_be_contact_form_section_form_description',
+            'label'         => 'Description du formulaire (optionnel)',
+            'name'          => 'form_description',
+            'type'          => 'textarea',
+            'rows'          => 2,
+            'new_lines'     => 'br',
+        ],
+        [
+            'key'           => 'field_be_contact_form_section_conditions',
+            'label'         => 'Conditions / Mentions légales',
+            'name'          => 'description_conditions',
+            'type'          => 'wysiwyg',
+            'tabs'          => 'visual',
+            'toolbar'       => 'basic',
+            'media_upload'  => 0,
+        ],
+    ],
+    'location' => [[[
+        'param'    => 'block',
+        'operator' => '==',
+        'value'    => 'acf/be-contact-form-section',
+    ]]],
+    'active'   => true,
+]);

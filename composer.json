@@ -1,0 +1,11 @@
+{
+  "name": "lumina/api-v2",
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lumina\\ApiV2\\": "src/"
+    }
+  }
+}

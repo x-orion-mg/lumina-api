@@ -1,0 +1,45 @@
+.lumina-icon-choice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lumina-icon-choice img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.lumina-icon-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    min-height: 48px;
+}
+
+.lumina-icon-preview img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.lumina-icon-preview__label {
+    font-weight: 500;
+    color: #1d2327;
+}
+
+.lumina-icon-preview__empty {
+    color: #646970;
+    font-style: italic;
+}
+
+.acf-field[data-name="icon_lumina"] .select2-container {
+    min-width: 100%;
+}

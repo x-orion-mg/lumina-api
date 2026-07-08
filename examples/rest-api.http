@@ -1,0 +1,48 @@
+### Lumina API v2 — exemples REST
+### Remplacez {{base}} par l’URL de votre site (ex. http://localhost/projets/lumina/srcs)
+
+@base = http://localhost/projets/lumina/srcs
+@lang = fr
+
+### ─── Icônes ─────────────────────────────────────────────
+
+### Liste toutes les icônes
+GET {{base}}/wp-json/lumina/v2/icons
+
+### Recherche icônes (slug ou label)
+GET {{base}}/wp-json/lumina/v2/icons?search=lucide-shield
+
+### Détail d’une icône
+GET {{base}}/wp-json/lumina/v2/icons/lucide-heart
+
+### ─── Types de contenus ──────────────────────────────────
+
+### Post types exposés par l’API
+GET {{base}}/wp-json/lumina/v2/content-types
+
+### ─── Contenus par type ──────────────────────────────────
+
+### Liste des articles (post) — pagination + recherche
+GET {{base}}/wp-json/lumina/v2/{{lang}}/content/post?page=1&per_page=10&search=alerte
+
+### Liste des partenaires
+GET {{base}}/wp-json/lumina/v2/{{lang}}/content/partner?page=1&per_page=20
+
+### Détail d’un article par slug
+GET {{base}}/wp-json/lumina/v2/{{lang}}/content/post/mon-article-slug
+
+### Détail d’une page (Gutenberg + ACF + WYSIWYG selon le contenu)
+GET {{base}}/wp-json/lumina/v2/{{lang}}/content/page/home-v2
+
+### ─── Pages & layout (existant) ──────────────────────────
+
+GET {{base}}/wp-json/lumina/v2/{{lang}}/page/home-v2
+
+### Layouts header
+GET {{base}}/wp-json/lumina/v2/{{lang}}/layout/header
+
+### Layouts footer
+GET {{base}}/wp-json/lumina/v2/{{lang}}/layout/footer
+
+### Layouts navigation
+GET {{base}}/wp-json/lumina/v2/{{lang}}/layout/others/?types=mon-menu,mon-menu-2
