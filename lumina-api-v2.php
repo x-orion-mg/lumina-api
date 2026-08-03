@@ -14,4 +14,4 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Lumina\ApiV2\Core\Plugin;
 
-Plugin::boot();
+add_action('plugins_loaded', [Plugin::class, 'boot']);

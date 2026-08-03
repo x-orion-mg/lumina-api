@@ -14,7 +14,9 @@ class Config
     public const API_BASE = 'lumina';
 
     /** Slug page options ACF du plugin (sous Theme Settings si disponible). */
-    public const OPTIONS_SLUG = 'lumina-v2-settings';
+    public const OPTIONS_SLUG = 'lumina-v2';
+    public const OPTIONS_SLUG_SETTINGS_LAYOUT = 'lumina-v2-settings-layout';
+    public const OPTIONS_SLUG_SETTINGS = 'lumina-v2-settings';
 
     /** Slug options thème legacy (lumina). */
     public const THEME_OPTIONS_SLUG = 'theme-general-settings';

@@ -2,54 +2,67 @@
 
 namespace Lumina\ApiV2\Options;
 
-use Lumina\ApiV2\Core\Config;
+use Lumina\ApiV2\Contracts\Registerable;
 
 class Loader
 {
     public static function init(): void
     {
-        add_action('acf/init', [self::class, 'registerOptionsPage']);
-        add_action('acf/init', [self::class, 'registerFieldGroups']);
+        add_action('acf/init', [self::class, 'load']);
     }
 
-    public static function registerOptionsPage(): void
+
+    public static function load(): void
     {
-        if (!function_exists('acf_add_options_page')) {
-            return;
-        }
-
-        $parent = Config::THEME_OPTIONS_SLUG;
-
-        if (function_exists('acf_get_options_page') && acf_get_options_page($parent)) {
-            acf_add_options_sub_page([
-                'page_title'  => 'Lumina API v2',
-                'menu_title'  => 'Lumina v2',
-                'menu_slug'   => Config::OPTIONS_SLUG,
-                'parent_slug' => $parent,
-                'capability'  => 'edit_posts',
-                'redirect'    => false,
-            ]);
-
-            return;
-        }
-
-        acf_add_options_page([
-            'page_title' => 'Lumina API v2',
-            'menu_title' => 'Lumina v2',
-            'menu_slug'  => Config::OPTIONS_SLUG,
-            'capability' => 'edit_posts',
-            'redirect'   => false,
-        ]);
+        self::discover(__DIR__);
     }
 
-    public static function registerFieldGroups(): void
-    {
-        foreach (glob(__DIR__ . '/*', GLOB_ONLYDIR) as $dir) {
-            $fieldsFile = $dir . '/fields.php';
 
-            if (file_exists($fieldsFile)) {
-                require_once $fieldsFile;
+    protected static function discover(string $directory): void
+    {
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($directory)
+        );
+
+        foreach ($iterator as $file) {
+
+            if ($file->getFilename() === 'Loader.php') {
+                continue;
             }
+
+            if ($file->getExtension() !== 'php') {
+                continue;
+            }
+
+            $relative = str_replace(
+                [
+                    __DIR__ . DIRECTORY_SEPARATOR,
+                    '.php'
+                ],
+                '',
+                $file->getPathname()
+            );
+
+
+            $class = __NAMESPACE__ . '\\' .
+                str_replace(
+                    DIRECTORY_SEPARATOR,
+                    '\\',
+                    $relative
+                );
+
+
+            if (!class_exists($class)) {
+                continue;
+            }
+
+
+            if (!is_subclass_of($class, Registerable::class)) {
+                continue;
+            }
+
+
+            $class::register();
         }
     }
 }
