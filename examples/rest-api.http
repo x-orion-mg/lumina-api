@@ -34,6 +34,9 @@ GET {{base}}/wp-json/lumina/v2/{{lang}}/content/post/mon-article-slug
 ### Détail d’une page (Gutenberg + ACF + WYSIWYG selon le contenu)
 GET {{base}}/wp-json/lumina/v2/{{lang}}/content/page/home-v2
 
+### Détail d’un événement (exemple Event — si activé)
+GET {{base}}/wp-json/lumina/v2/{{lang}}/content/event/mon-evenement
+
 ### ─── Pages & layout (existant) ──────────────────────────
 
 GET {{base}}/wp-json/lumina/v2/{{lang}}/page/home-v2

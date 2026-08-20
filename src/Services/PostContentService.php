@@ -2,7 +2,7 @@
 
 namespace Lumina\ApiV2\Services;
 
-use Lumina\ApiV2\Transformers\PostContentTransformer;
+use Lumina\ApiV2\PostTypes\PostTypeTransformerResolver;
 
 class PostContentService
 {
@@ -46,7 +46,7 @@ class PostContentService
 
             foreach ($query->posts as $post) {
                 if ($post instanceof \WP_Post) {
-                    $items[] = PostContentTransformer::summary($post, $lang);
+                    $items[] = PostTypeTransformerResolver::summary($post, $lang);
                 }
             }
 
@@ -96,7 +96,7 @@ class PostContentService
                 return null;
             }
 
-            return PostContentTransformer::detail($post, $lang);
+            return PostTypeTransformerResolver::detail($post, $lang);
         });
     }
 

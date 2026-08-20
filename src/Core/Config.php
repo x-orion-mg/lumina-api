@@ -17,6 +17,7 @@ class Config
     public const OPTIONS_SLUG = 'lumina-v2';
     public const OPTIONS_SLUG_SETTINGS_LAYOUT = 'lumina-v2-settings-layout';
     public const OPTIONS_SLUG_SETTINGS = 'lumina-v2-settings';
+    public const OPTIONS_SLUG_POST_TYPES = 'lumina-v2-post-types';
 
     /** Slug options thème legacy (lumina). */
     public const THEME_OPTIONS_SLUG = 'theme-general-settings';
