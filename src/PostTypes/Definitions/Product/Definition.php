@@ -10,18 +10,32 @@ class Definition implements PostTypeDefinitionProvider
     public static function create(): PostTypeDefinition
     {
         return PostTypeDefinition::fromArray([
-            'key'             => 'product',
-            'managed'         => false,
-            'labels'          => [
-                'name'          => 'Produits',
+            'key' => 'product',
+
+            'managed' => false,
+
+            'labels' => [
+                'name' => 'Produits',
                 'singular_name' => 'Produit',
             ],
-            'slug'            => 'product',
-            'supports'        => [],
-            'public'          => true,
+
+            'slug' => 'product',
+
+            'supports' => [],
+
+            'public' => true,
+
             'default_enabled' => false,
-            'api'             => ['enabled' => true],
-            'description'     => 'Produits WooCommerce (CPT enregistré par WooCommerce).',
+
+            'api' => [
+                'enabled' => true,
+            ],
+
+            'acf_groups' => [
+                Information::class,
+            ],
+
+            'description' => 'Produits WooCommerce (CPT enregistré par WooCommerce).',
         ]);
     }
 }

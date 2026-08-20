@@ -11,7 +11,16 @@ class PostTypeManager
     {
         PostTypeRegistry::instance()->discover();
 
-        add_action('init', [PostTypeRegistrar::class, 'register'], 99);
-        add_action('acf/init', [AcfGroupRegistrar::class, 'registerAll'], 20);
+        add_action(
+            'init',
+            [PostTypeRegistrar::class, 'register'],
+            99
+        );
+
+        add_action(
+            'acf/include_fields',
+            [AcfGroupRegistrar::class, 'registerAll'],
+            20
+        );
     }
 }

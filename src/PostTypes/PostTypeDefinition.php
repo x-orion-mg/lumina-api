@@ -199,4 +199,27 @@ class PostTypeDefinition
 
         return $args;
     }
+
+    /**
+     * Classes de groupes ACF associés au Post Type.
+     *
+     * @return array<int, string>
+     */
+    public function getAcfGroups(): array
+    {
+        $groups = $this->config['acf_groups'] ?? [];
+
+        if (!is_array($groups)) {
+            return [];
+        }
+
+        return array_values(
+            array_filter(
+                $groups,
+                static function ($group): bool {
+                    return is_string($group) && $group !== '';
+                }
+            )
+        );
+    }
 }

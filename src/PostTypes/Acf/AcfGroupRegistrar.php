@@ -2,9 +2,6 @@
 
 namespace Lumina\ApiV2\PostTypes\Acf;
 
-use Lumina\ApiV2\PostTypes\PostTypeDefinition;
-use Lumina\ApiV2\PostTypes\PostTypeRegistry;
-
 class AcfGroupRegistrar
 {
     public static function registerAll(): void
@@ -13,89 +10,78 @@ class AcfGroupRegistrar
             return;
         }
 
-        $registry = PostTypeRegistry::instance();
+        $registry = AcfRegistry::instance();
 
-        foreach ($registry->all() as $definition) {
-            if ($definition->isBuiltin()) {
-                continue;
-            }
+        $registry->discover();
 
-            if (!self::shouldRegisterFields($definition)) {
-                continue;
-            }
-
-            self::registerForDefinition($definition);
+        foreach ($registry->active() as $group) {
+            self::registerGroup($registry, $group);
         }
     }
 
     /**
-     * CPT géré ailleurs (WooCommerce, thème) : champs ACF dès que le post type existe.
-     * CPT Lumina : champs ACF si activé dans l’admin Post Types.
+     * @param array{
+     *     class: class-string<AcfGroup>,
+     *     post_types: array<string, bool>
+     * } $group
      */
-    public static function shouldRegisterFields(PostTypeDefinition $definition): bool
-    {
-        $registry = PostTypeRegistry::instance();
-        $key = $definition->getKey();
+    private static function registerGroup(
+        AcfRegistry $registry,
+        array $group
+    ): void {
+        $config = $registry->buildGroupConfig($group);
 
-        if ($registry->getFieldsClass($key) === null) {
-            return false;
-        }
-
-        if (!$definition->isManaged() && post_type_exists($key)) {
-            return true;
-        }
-
-        return $registry->isEnabled($key);
-    }
-
-    public static function registerForDefinition(PostTypeDefinition $definition): void
-    {
-        if (!function_exists('acf_add_local_field_group')) {
+        if (
+            empty($config['key'])
+            || empty($config['fields'])
+            || !is_array($config['fields'])
+        ) {
             return;
         }
 
-        $registry = PostTypeRegistry::instance();
-        $key = $definition->getKey();
-        $fieldsClass = $registry->getFieldsClass($key);
+        $postTypes = array_keys($group['post_types']);
 
-        if ($fieldsClass === null || !method_exists($fieldsClass, 'fields')) {
+        $config['fields'] = apply_filters(
+            'lumina_api_v2_acf_fields',
+            $config['fields'],
+            $config['key'],
+            $postTypes,
+            $group['class']
+        );
+
+        /*
+         * Compatibilité avec le filtre historique.
+         *
+         * Le filtre est appliqué pour chaque Post Type concerné.
+         * Le résultat final est fusionné.
+         */
+        foreach ($postTypes as $postType) {
+            $definition = \Lumina\ApiV2\PostTypes\PostTypeRegistry::instance()
+                ->get($postType);
+
+            if (!$definition) {
+                continue;
+            }
+
+            $config['fields'] = apply_filters(
+                'lumina_api_v2_post_type_fields',
+                $config['fields'],
+                $postType,
+                $definition
+            );
+        }
+
+        if (!is_array($config['fields']) || $config['fields'] === []) {
             return;
         }
 
-        $fields = $fieldsClass::fields();
-        $fields = apply_filters('lumina_api_v2_post_type_fields', $fields, $key, $definition);
+        $config = apply_filters(
+            'lumina_api_v2_acf_field_group',
+            $config,
+            $group['class'],
+            $postTypes
+        );
 
-        if (!is_array($fields) || $fields === []) {
-            return;
-        }
-
-        $labels = $definition->getLabels();
-        $singular = $labels['singular_name'] ?? $definition->getLabel();
-
-        acf_add_local_field_group([
-            'key'                   => self::groupKey($key),
-            'title'                 => $singular . ' — Lumina API v2',
-            'fields'                => $fields,
-            'location'              => [
-                [
-                    [
-                        'param'    => 'post_type',
-                        'operator' => '==',
-                        'value'    => $key,
-                    ],
-                ],
-            ],
-            'menu_order'            => 0,
-            'position'              => 'normal',
-            'style'                 => 'default',
-            'label_placement'       => 'top',
-            'instruction_placement' => 'label',
-            'active'                => true,
-        ]);
-    }
-
-    public static function groupKey(string $postTypeKey): string
-    {
-        return 'group_lumina_pt_' . sanitize_key($postTypeKey);
+        acf_add_local_field_group($config);
     }
 }
