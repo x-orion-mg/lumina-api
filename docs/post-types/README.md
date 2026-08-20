@@ -42,7 +42,10 @@ Pour ajouter un CPT, créer un dossier :
 ```
 src/PostTypes/Definitions/{Name}/
 ├── Definition.php    # Configuration WordPress + API
-├── Fields.php        # Champs ACF (optionnel)
+├── Acf/
+├    ├── Information.php
+├    ├── Company.php
+├    └── Contact.php        # Champs ACF (optionnel)
 └── Transformer.php   # Format JSON API (optionnel)
 ```
 
