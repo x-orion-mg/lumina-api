@@ -2,6 +2,7 @@
 
 namespace Lumina\ApiV2\PostTypes\Definitions\Product;
 
+use Lumina\ApiV2\PostTypes\Acf\Shared\Seo;
 use Lumina\ApiV2\PostTypes\Contracts\PostTypeDefinitionProvider;
 use Lumina\ApiV2\PostTypes\PostTypeDefinition;
 
@@ -32,7 +33,7 @@ class Definition implements PostTypeDefinitionProvider
             ],
 
             'acf_groups' => [
-                Information::class,
+                Seo::class,
             ],
 
             'description' => 'Produits WooCommerce (CPT enregistré par WooCommerce).',
