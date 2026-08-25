@@ -6,6 +6,7 @@ use Lumina\ApiV2\Helpers\AcfBlockData;
 use Lumina\ApiV2\Helpers\AcfRepeater;
 use Lumina\ApiV2\Helpers\BlockResponse;
 use Lumina\ApiV2\Helpers\Media;
+use Lumina\ApiV2\Helpers\Product;
 
 final class Transformer
 {
@@ -68,7 +69,7 @@ final class Transformer
                 continue;
             }
 
-            $products[] = self::transformProduct($product);
+            $products[] = Product::parse($product);
 
             if (count($products) >= self::PRODUCTS_LIMIT) {
                 break;
@@ -108,33 +109,10 @@ final class Transformer
 
         return array_map(
             static function ($product): array {
-                return self::transformProduct($product);
+                return Product::parse($product);
             },
             $products
         );
     }
 
-    /**
-     * Normalise un produit WooCommerce pour l'API Lumina.
-     */
-    private static function transformProduct($product): array
-    {
-        return [
-            'id' => (int) $product->get_id(),
-            'name' => $product->get_name(),
-            'slug' => $product->get_slug(),
-            'sku' => $product->get_sku(),
-            'url' => $product->get_permalink(),
-
-            'image' => Media::image(
-                $product->get_image_id()
-            ),
-
-            'price' => $product->get_price(),
-            'regular_price' => $product->get_regular_price(),
-            'sale_price' => $product->get_sale_price(),
-
-            'on_sale' => $product->is_on_sale(),
-        ];
-    }
 }
