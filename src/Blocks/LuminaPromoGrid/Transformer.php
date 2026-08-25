@@ -32,7 +32,7 @@ final class Transformer
             ],
             static function (array $item): array {
                 return [
-                    'product' => Product::parse($item['product']) ?? null,
+                    'product' => Product::parse($item['product']?? null) ,
 
                     'subtitle' => $item['subtitle'] ?? '',
 
