@@ -1,23 +1,28 @@
 <?php
 
 return [
-    'name' => 'lumina-service-features',
-    'title' => 'Lumina - Service Features',
-    'description' => 'Liste de services ou avantages Lumina.',
-    'category' => 'lumina',
-    'icon' => 'star-filled',
-    'keywords' => [
+    'name'        => 'lumina-product-showcase',
+    'title'       => 'Lumina - Product Showcase',
+    'description' => 'Affiche une sélection de produits organisée par onglets.',
+    'category'    => 'lumina',
+    'icon'        => 'screenoptions',
+    'keywords'    => [
         'lumina',
-        'services',
-        'features',
-        'avantages',
+        'produits',
+        'product',
+        'showcase',
+        'onglets',
+        'tabs',
     ],
-    'mode' => 'edit',
+
+    'mode' => 'preview',
+
     'supports' => [
-        'align' => false,
+        'align'  => false,
         'anchor' => true,
-        'customClassName' => true,
+        'mode'   => true,
     ],
+
     'render_template' => __DIR__ . '/render.php',
 
     'example' => [
