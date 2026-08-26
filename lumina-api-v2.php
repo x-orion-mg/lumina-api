@@ -4,7 +4,7 @@
  * Plugin Name: Lumina API v2
  * Description: Plugin de gestation API V2 de Lumina.
  * Author: Mahery
- * Version: 1.0.0
+ * Version: 1.1.0
  */
 
 const LUMINA_API_V2_PATH = __DIR__;
