@@ -7,11 +7,8 @@ return [
     'category'        => 'lumina',
     'icon'            => 'index-card',
     'keywords'        => ['privacy', 'legal', 'navigation'],
-    'mode'            => 'preview',
-    'supports'        => [
-        'align' => false,
-        'mode'  => true,
-    ],
+    'acf_block_version' => 3,
+    'api_version'       => 3,
     'render_template' => __DIR__ . '/render.php',
     'example'         => [
         'attributes' => [

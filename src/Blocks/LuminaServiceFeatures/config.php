@@ -12,12 +12,8 @@ return [
         'features',
         'avantages',
     ],
-    'mode' => 'edit',
-    'supports' => [
-        'align' => false,
-        'anchor' => true,
-        'customClassName' => true,
-    ],
+    'acf_block_version' => 3,
+    'api_version'       => 3,
     'render_template' => __DIR__ . '/render.php',
 
     'example' => [

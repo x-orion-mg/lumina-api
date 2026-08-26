@@ -15,13 +15,8 @@ return [
         'product',
     ],
 
-    'mode' => 'preview',
-
-    'supports' => [
-        'align'  => false,
-        'anchor' => true,
-        'mode'   => true,
-    ],
+    'acf_block_version' => 3,
+    'api_version'       => 3,
 
     'render_template' => __DIR__ . '/render.php',
 
