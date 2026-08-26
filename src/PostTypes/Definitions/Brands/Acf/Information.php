@@ -77,7 +77,7 @@ class Information extends AcfGroup
                 'name' => 'description',
                 'type' => 'textarea',
                 'instructions' => 'Description de la marque.',
-                'required' => 1,
+                'required' => 0,
 
                 'wrapper' => [
                     'width' => '',

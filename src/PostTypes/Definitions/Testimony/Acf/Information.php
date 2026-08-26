@@ -71,7 +71,22 @@ class Information extends AcfGroup
 
                 'default_value' => '',
             ],
+            [
+                'key' => 'field_lumina_testimony_name',
+                'label' => 'Nom',
+                'name' => 'name',
+                'type' => 'text',
+                'instructions' => 'Nom de la personne.',
+                'required' => 1,
 
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+
+                'default_value' => '',
+            ],
             [
                 'key' => 'field_lumina_testimony_profile',
                 'label' => 'Photo de profil',

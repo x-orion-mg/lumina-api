@@ -32,7 +32,7 @@ acf_add_local_field_group([
             'required' => 0,
 
             'post_type' => [
-                'testimony',
+                'brand',
             ],
 
             'post_status' => [
