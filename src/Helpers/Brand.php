@@ -2,7 +2,7 @@
 
 namespace Lumina\ApiV2\Helpers;
 
-final class Testimony
+final class Brand
 {
     /**
      * Transforme un témoignage WordPress en objet API.
@@ -29,14 +29,14 @@ final class Testimony
         /*
          * Vérifie qu'il s'agit bien d'un témoignage.
          */
-        if ($post->post_type !== 'testimony') {
+        if ($post->post_type !== 'brand') {
             return null;
         }
 
         return [
             'id' => (int) $post->ID,
 
-            'title' => get_the_title($post->ID),
+            'post_title' => get_the_title($post->ID),
 
             'content' => apply_filters(
                 'the_content',
@@ -52,10 +52,11 @@ final class Testimony
                 'c',
                 $post->ID
             ),
-            'testimony' => get_field('testimony', $post->ID),
-            'job' => get_field('job', $post->ID),
-            'company' => get_field('company', $post->ID),
-            'profile' => get_field('profile', $post->ID)
+            'logo'=>get_field('logo', $post->ID),
+            'link' => get_field('link', $post->ID),
+            'brand_name' => get_field('name', $post->ID),
+            'description' => get_field('description', $post->ID),
+
         ];
     }
 }

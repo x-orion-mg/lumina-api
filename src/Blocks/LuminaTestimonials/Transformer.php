@@ -8,7 +8,7 @@ use Lumina\ApiV2\Helpers\Testimony;
 
 final class Transformer
 {
-    private const TESTIMONIALS_LIMIT = 3;
+    private const TESTIMONIALS_LIMIT = 5;
 
     public static function transform(array $block): array
     {

@@ -20,11 +20,75 @@ class Information extends AcfGroup
     {
         return [
             [
-                'key'   => 'field_lumina_testimony_text',
+                'key' => 'field_lumina_testimony_testimony',
                 'label' => 'Témoignage',
-                'name'  => 'testimony',
-                'type'  => 'textarea',
-                'rows'  => 4,
+                'name' => 'testimony',
+                'type' => 'textarea',
+                'instructions' => 'Texte du témoignage.',
+                'required' => 1,
+
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+
+                'default_value' => '',
+                'rows' => 6,
+                'new_lines' => 'br',
+            ],
+
+            [
+                'key' => 'field_lumina_testimony_job',
+                'label' => 'Poste',
+                'name' => 'job',
+                'type' => 'text',
+                'instructions' => 'Poste ou fonction de la personne.',
+                'required' => 0,
+
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+
+                'default_value' => '',
+            ],
+
+            [
+                'key' => 'field_lumina_testimony_company',
+                'label' => 'Entreprise',
+                'name' => 'company',
+                'type' => 'text',
+                'instructions' => 'Nom de l’entreprise.',
+                'required' => 0,
+
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+
+                'default_value' => '',
+            ],
+
+            [
+                'key' => 'field_lumina_testimony_profile',
+                'label' => 'Photo de profil',
+                'name' => 'profile',
+                'type' => 'image',
+                'instructions' => 'Photo de profil de la personne.',
+                'required' => 0,
+
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+
+                'return_format' => 'array',
+                'library' => 'all',
+                'preview_size' => 'medium',
             ],
         ];
     }

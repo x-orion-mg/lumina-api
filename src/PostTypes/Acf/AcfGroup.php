@@ -52,6 +52,9 @@ abstract class AcfGroup
             'description'           => '',
             'show_in_rest'          => 0,
             'display_title'         => '',
+            'show_in_graphql' => true,
+            'map_graphql_types_from_location_rules' => 0,
+            'graphql_field_name' => static::key(),
         ];
     }
 }
