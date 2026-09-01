@@ -89,8 +89,8 @@ acf_add_local_field_group([
                     [
                         'key' => 'field_lumina_promo_banner_card_image',
                         'label' => 'Image',
-                        'name' => 'image',
-                        'type' => 'image',
+                        'name' => 'images',
+                        'type' => 'gallery',
 
                         'required' => 1,
 
@@ -99,7 +99,8 @@ acf_add_local_field_group([
                             'class' => '',
                             'id' => '',
                         ],
-
+                        'min'  =>0,
+                        'max'  => 3,
                         'return_format' => 'array',
 
                         'library' => 'all',

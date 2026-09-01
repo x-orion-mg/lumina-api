@@ -23,7 +23,7 @@ final class Transformer
                 'subtitle',
                 'title',
                 'description',
-                'image',
+                'images',
                 'lumina_promo_banner_button',
             ],
             static function (array $item): array {
@@ -34,8 +34,8 @@ final class Transformer
 
                     'description' => $item['description'] ?? '',
 
-                    'image' => Media::image(
-                        $item['image'] ?? null
+                    'images' => Media::images(
+                        $item['images'] ?? null
                     ),
 
                     'cta' => Button::parse(

@@ -25,6 +25,22 @@ acf_add_local_field_group([
             'required' => 1,
         ],
         [
+            'key' => 'field_lumina_product_category_featured_color',
+            'label' => 'Couleur',
+            'name' => 'color',
+            'type' => 'color_picker',
+
+            'instructions' => 'Orange : #FBE0CC — Bleu : #A3E2F7',
+
+            'required' => 1,
+
+            'default_value' => '#FBE0CC',
+
+            'enable_opacity' => 0,
+
+            'return_format' => 'string',
+        ],
+        [
             'key' => 'field_lumina_product_category_source_type',
             'label' => 'Source des produits',
             'name' => 'source_type',

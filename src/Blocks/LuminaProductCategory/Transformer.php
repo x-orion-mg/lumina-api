@@ -30,6 +30,7 @@ final class Transformer
             'product_category',
             [
                 'title' => $data['title'] ?? '',
+                'color' => $data['color'] ?? '',
 
                 'source_type' => $sourceType,
 

@@ -65,4 +65,21 @@ class Media
             'height' => isset($meta['height']) ? (int) $meta['height'] : null,
         ];
     }
+
+    public static function images(mixed $images): array
+    {
+        if (empty($images) || !is_array($images)) {
+            return [];
+        }
+
+        return array_values(
+            array_filter(
+                array_map(
+                    fn ($image) => self::image($image),
+                    $images
+                )
+            )
+        );
+    }
+
 }
