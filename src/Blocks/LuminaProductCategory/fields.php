@@ -208,6 +208,23 @@ acf_add_local_field_group([
                     ],
 
                     [
+                        'key' => 'field_lumina_product_category_featured_price',
+                        'label' => 'Prix',
+                        'name' => 'price',
+                        'type' => 'text',
+                        'instructions' => 'Texte libre permettant de contrôler exactement l’affichage du prix.',
+                        'required' => 0,
+
+                        'wrapper' => [
+                            'width' => '50',
+                            'class' => '',
+                            'id' => '',
+                        ],
+
+                        'default_value' => '',
+                    ],
+
+                    [
                         'key' => 'field_lumina_product_category_featured_image',
                         'label' => 'Image',
                         'name' => 'image',

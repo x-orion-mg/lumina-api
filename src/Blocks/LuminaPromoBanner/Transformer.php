@@ -37,6 +37,7 @@ final class Transformer
                     'images' => Media::images(
                         $item['images'] ?? null
                     ),
+                    'image'=> Media::image($item['images'][0] ?? null),
 
                     'cta' => Button::parse(
                         $item['lumina_promo_banner_button'] ?? null

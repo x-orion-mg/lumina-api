@@ -228,6 +228,22 @@ acf_add_local_field_group([
                         'rows' => 3,
                         'new_lines' => 'br',
                     ],
+                    [
+                        'key' => 'field_lumina_hero_card_price',
+                        'label' => 'Prix',
+                        'name' => 'price',
+                        'type' => 'text',
+                        'instructions' => 'Texte libre permettant de contrôler exactement l’affichage du prix.',
+                        'required' => 0,
+
+                        'wrapper' => [
+                            'width' => '50',
+                            'class' => '',
+                            'id' => '',
+                        ],
+
+                        'default_value' => '',
+                    ],
 
                     [
                         'key' => 'field_lumina_hero_card_image',

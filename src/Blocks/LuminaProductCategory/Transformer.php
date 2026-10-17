@@ -48,6 +48,7 @@ final class Transformer
                     'subtitle' => $data['featured_subtitle'] ?? '',
 
                     'title' => $data['featured_title'] ?? '',
+                    'price' => $data['featured_price'] ?? '',
 
                     'image' => Media::image(
                         $data['featured_image'] ?? null
