@@ -4,6 +4,7 @@ namespace Lumina\ApiV2\Transformers;
 
 use Lumina\ApiV2\Helpers\AcfRepeater;
 use Lumina\ApiV2\Helpers\Button;
+use Lumina\ApiV2\Helpers\Icon;
 use Lumina\ApiV2\Helpers\Media;
 
 class FooterTransformer
@@ -18,6 +19,13 @@ class FooterTransformer
             'branding' => [
                 'logo' => Media::image($data['footer_logo'] ?? null),
                 'description' => $data['footer_description'] ?? '',
+                'contact' =>[
+                    'icon' => Icon::parse(
+                        $data['footer_contact']['icon_lumina'] ?? null
+                    ),
+                    'tel' => $data['footer_contact']['tel'] ?? '',
+                    'text' => $data['footer_contact']['description'] ?? '',
+                ],
             ],
             'columns' => self::columns($data['footer_columns'] ?? []),
             'bottom' => [

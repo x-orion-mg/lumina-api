@@ -10,58 +10,174 @@ class Header implements Registerable
     public static function register(): void
     {
         acf_add_local_field_group([
-
             'key' => 'group_lumina_header_v2',
-
             'title' => 'Header (API v2)',
 
             'fields' => [
 
+                /*
+                 * =====================================================
+                 * TOPBAR
+                 * =====================================================
+                 */
+
                 [
-                    'key' => 'field_be_header_tab_general',
-                    'label' => 'Général',
+                    'key' => 'field_lumina_header_v2_tab_topbar',
+                    'label' => 'Topbar',
                     'name' => '',
                     'type' => 'tab',
                     'placement' => 'top',
                 ],
 
                 [
-                    'key' => 'field_be_header_logo',
-                    'label' => 'Logo',
-                    'name' => 'header_logo',
+                    'key' => 'field_lumina_header_v2_topbar_text',
+                    'label' => 'Texte promotionnel',
+                    'name' => 'topbar_text',
+                    'type' => 'text',
+                    'default_value' => 'Découvrez nos produits Lumina et profitez de -10 % sur votre premier achat !',
+                    'placeholder' => 'Votre message promotionnel...',
+                    'maxlength' => 255,
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_topbar_background',
+                    'label' => 'Couleur de fond',
+                    'name' => 'topbar_background_color',
+                    'type' => 'color_picker',
+                    'default_value' => '#1B1B68',
+                    'enable_opacity' => 0,
+                    'return_format' => 'string',
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_topbar_text_color',
+                    'label' => 'Couleur du texte',
+                    'name' => 'topbar_text_color',
+                    'type' => 'color_picker',
+                    'default_value' => '#FFFFFF',
+                    'enable_opacity' => 0,
+                    'return_format' => 'string',
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_topbar_phone_link',
+                    'label' => 'Lien Téléphone',
+                    'name' => 'topbar_phone_link',
+                    'type' => 'link',
+                    'return_format' => 'array',
+                    'instructions' => 'Lien vers la page de contact ou le numéro de téléphone cliquable.',
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_topbar_account_link',
+                    'label' => 'Lien Mon compte',
+                    'name' => 'topbar_account_link',
+                    'type' => 'link',
+                    'return_format' => 'array',
+                    'instructions' => 'Lien vers la page Mon compte WooCommerce.',
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                ],
+
+                /*
+                 * =====================================================
+                 * MAIN HEADER
+                 * =====================================================
+                 */
+
+                [
+                    'key' => 'field_lumina_header_v2_tab_main_header',
+                    'label' => 'En-tête principal',
+                    'name' => '',
+                    'type' => 'tab',
+                    'placement' => 'top',
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_logo',
+                    'label' => 'Logo du site',
+                    'name' => 'main_header_logo',
                     'type' => 'image',
                     'return_format' => 'array',
                     'preview_size' => 'medium',
                     'library' => 'all',
+                    'required' => 1,
                 ],
 
                 [
-                    'key' => 'field_be_header_phone',
-                    'label' => 'Numéro de téléphone',
-                    'name' => 'header_phone',
+                    'key' => 'field_lumina_header_v2_search_placeholder',
+                    'label' => 'Placeholder de recherche',
+                    'name' => 'search_placeholder',
                     'type' => 'text',
-                    'placeholder' => '+33 (0)1 86 65 48 80',
+                    'default_value' => 'Rechercher un produit, une référence ou une gamme Lumina...',
+                    'placeholder' => 'Rechercher...',
+                    'maxlength' => 255,
                 ],
 
                 [
-                    'key' => 'field_be_header_cta',
-                    'label' => 'Bouton CTA (ex. Demander une démo)',
-                    'name' => 'header_cta',
+                    'key' => 'field_lumina_header_v2_search_button_label',
+                    'label' => 'Libellé du bouton de recherche',
+                    'name' => 'search_button_label',
+                    'type' => 'text',
+                    'default_value' => 'Rechercher',
+                    'maxlength' => 100,
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_reseller_logo',
+                    'label' => 'Logo du revendeur agréé',
+                    'name' => 'reseller_logo',
+                    'type' => 'image',
+                    'return_format' => 'array',
+                    'preview_size' => 'medium',
+                    'library' => 'all',
+                    'instructions' => 'Logo du fabricant ou du partenaire dont la marque est commercialisée.',
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_reseller_label',
+                    'label' => 'Texte au-dessus du logo revendeur',
+                    'name' => 'reseller_label',
+                    'type' => 'text',
+                    'default_value' => 'Revendeur agréé',
+                    'maxlength' => 100,
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_reseller_authorization_link',
+                    'label' => 'Lien vers l’autorisation',
+                    'name' => 'reseller_authorization_link',
                     'type' => 'link',
                     'return_format' => 'array',
+                    'instructions' => 'Lien vers la page ou le document justifiant l’autorisation de revente.',
                 ],
 
-                [
-                    'key' => 'field_be_header_show_lang',
-                    'label' => 'Afficher le sélecteur de langue',
-                    'name' => 'header_show_language_switcher',
-                    'type' => 'true_false',
-                    'ui' => 1,
-                    'default_value' => 1,
-                ],
+                /*
+                 * =====================================================
+                 * NAVIGATION
+                 * =====================================================
+                 */
 
                 [
-                    'key' => 'field_be_header_tab_nav',
+                    'key' => 'field_lumina_header_v2_tab_navigation',
                     'label' => 'Navigation',
                     'name' => '',
                     'type' => 'tab',
@@ -69,47 +185,231 @@ class Header implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_header_nav',
+                    'key' => 'field_lumina_header_v2_nav_items',
                     'label' => 'Éléments du menu',
-                    'name' => 'header_nav',
+                    'name' => 'navigation_items',
                     'type' => 'repeater',
                     'layout' => 'block',
                     'button_label' => 'Ajouter un élément',
-                    'min' => 1,
+                    'min' => 0,
+
                     'sub_fields' => [
 
-                        [
-                            'key' => 'field_be_header_nav_label',
-                            'label' => 'Libellé',
-                            'name' => 'label',
-                            'type' => 'text',
-                            'required' => 1,
-                        ],
+                        /*
+                         * Type d'élément
+                         */
 
                         [
-                            'key' => 'field_be_header_nav_type',
-                            'label' => 'Type',
+                            'key' => 'field_lumina_header_v2_nav_type',
+                            'label' => 'Type d’élément',
                             'name' => 'type',
                             'type' => 'select',
                             'choices' => [
-                                'link' => 'Lien simple',
-                                'mega_menu' => 'Mega menu',
+                                'menu'      => 'Menu WordPress',
+                                'mega_menu' => 'Méga-menu',
+                                'link'      => 'Lien personnalisé',
                             ],
-                            'default_value' => 'link',
+                            'default_value' => 'menu',
                             'ui' => 1,
                             'return_format' => 'value',
+                            'required' => 1,
+                        ],
+
+                        /*
+                         * Menu WordPress
+                         *
+                         * Affiché pour :
+                         * - Menu WordPress
+                         * - Méga-menu
+                         */
+
+                        [
+                            'key' => 'field_lumina_header_v2_nav_menu',
+                            'label' => 'Menu WordPress',
+                            'name' => 'menu',
+                            'type' => 'select',
+                            'choices' => self::getWordPressMenus(),
+                            'allow_null' => 1,
+                            'ui' => 1,
+                            'return_format' => 'value',
+                            'required' => 1,
+
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'menu',
+                                    ],
+                                ],
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'mega_menu',
+                                    ],
+                                ],
+                            ],
+                        ],
+
+                        /*
+                         * Image du méga-menu
+                         */
+
+                        [
+                            'key' => 'field_lumina_header_v2_nav_mega_image',
+                            'label' => 'Image du méga-menu',
+                            'name' => 'mega_menu_image',
+                            'type' => 'image',
+                            'return_format' => 'array',
+                            'preview_size' => 'medium',
+                            'library' => 'all',
+
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'mega_menu',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'field_lumina_header_v2_nav_mega_eyebrow',
+                            'label' => 'Surtitre',
+                            'name' => 'eyebrow',
+                            'type' => 'text',
+
+                            'wrapper' => [
+                                'width' => '50',
+                                'class' => '',
+                                'id' => '',
+                            ],
+
+                            'default_value' => '',
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'mega_menu',
+                                    ],
+                                ],
+                            ],
                         ],
 
                         [
-                            'key' => 'field_be_header_nav_link',
+                            'key' => 'field_lumina_header_v2_nav_mega_title',
+                            'label' => 'Titre',
+                            'name' => 'title',
+                            'type' => 'textarea',
+
+                            'wrapper' => [
+                                'width' => '50',
+                                'class' => '',
+                                'id' => '',
+                            ],
+
+                            'default_value' => '',
+                            'rows' => 3,
+                            'new_lines' => 'br',
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'mega_menu',
+                                    ],
+                                ],
+                            ],
+                        ],
+
+                        [
+                            'key' => 'field_lumina_header_v2_nav_mega_description',
+                            'label' => 'Description',
+                            'name' => 'description',
+                            'type' => 'textarea',
+
+                            'wrapper' => [
+                                'width' => '50',
+                                'class' => '',
+                                'id' => '',
+                            ],
+
+                            'default_value' => '',
+                            'rows' => 3,
+                            'new_lines' => 'br',
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'mega_menu',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'field_lumina_header_v2_nav_mega_price',
+                            'label' => 'Prix',
+                            'name' => 'price',
+                            'type' => 'text',
+                            'instructions' => 'Texte libre permettant de contrôler exactement l’affichage du prix.',
+                            'required' => 0,
+
+                            'wrapper' => [
+                                'width' => '50',
+                                'class' => '',
+                                'id' => '',
+                            ],
+
+                            'default_value' => '',
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'mega_menu',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'field_lumina_header_v2_nav_mega_link',
                             'label' => 'Lien',
                             'name' => 'link',
                             'type' => 'link',
                             'return_format' => 'array',
+                            'required' => 1,
+
                             'conditional_logic' => [
                                 [
                                     [
-                                        'field' => 'field_be_header_nav_type',
+                                        'field' => 'field_lumina_header_v2_nav_type',
+                                        'operator' => '==',
+                                        'value' => 'mega_menu',
+                                    ],
+                                ],
+                            ],
+                        ],
+
+                        /*
+                         * Lien personnalisé
+                         */
+
+                        [
+                            'key' => 'field_lumina_header_v2_nav_link',
+                            'label' => 'Lien',
+                            'name' => 'link',
+                            'type' => 'link',
+                            'return_format' => 'array',
+                            'required' => 1,
+
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field' => 'field_lumina_header_v2_nav_type',
                                         'operator' => '==',
                                         'value' => 'link',
                                     ],
@@ -117,105 +417,44 @@ class Header implements Registerable
                             ],
                         ],
 
+                    ],
+                ],
+
+                /*
+                 * CTA à droite de la navigation
+                 */
+
+                [
+                    'key' => 'field_lumina_header_v2_nav_cta_tab',
+                    'label' => 'Bouton CTA',
+                    'name' => '',
+                    'type' => 'tab',
+                    'placement' => 'top',
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_nav_cta_enabled',
+                    'label' => 'Afficher le bouton CTA',
+                    'name' => 'navigation_cta_enabled',
+                    'type' => 'true_false',
+                    'ui' => 1,
+                    'default_value' => 1,
+                ],
+
+                [
+                    'key' => 'field_lumina_header_v2_nav_cta',
+                    'label' => 'Bouton CTA',
+                    'name' => 'navigation_cta',
+                    'type' => 'link',
+                    'return_format' => 'array',
+                    'conditional_logic' => [
                         [
-                            'key' => 'field_be_header_nav_mega',
-                            'label' => 'Mega menu',
-                            'name' => 'mega_menu',
-                            'type' => 'group',
-                            'layout' => 'block',
-                            'conditional_logic' => [
-                                [
-                                    [
-                                        'field' => 'field_be_header_nav_type',
-                                        'operator' => '==',
-                                        'value' => 'mega_menu',
-                                    ],
-                                ],
-                            ],
-                            'sub_fields' => [
-
-                                [
-                                    'key' => 'field_be_header_mega_title',
-                                    'label' => 'Titre du panneau',
-                                    'name' => 'title',
-                                    'type' => 'text',
-                                ],
-
-                                [
-                                    'key' => 'field_be_header_mega_description',
-                                    'label' => 'Description',
-                                    'name' => 'description',
-                                    'type' => 'textarea',
-                                    'rows' => 3,
-                                    'new_lines' => 'br',
-                                ],
-
-                                [
-                                    'key' => 'field_be_header_mega_links',
-                                    'label' => 'Liens (colonne gauche)',
-                                    'name' => 'links',
-                                    'type' => 'repeater',
-                                    'layout' => 'table',
-                                    'button_label' => 'Ajouter un lien',
-                                    'sub_fields' => [
-                                        [
-                                            'key' => 'field_be_header_mega_link_item',
-                                            'label' => 'Lien',
-                                            'name' => 'link',
-                                            'type' => 'link',
-                                            'return_format' => 'array',
-                                        ],
-                                    ],
-                                ],
-
-                                [
-                                    'key' => 'field_be_header_mega_highlights',
-                                    'label' => 'Cartes (colonne droite)',
-                                    'name' => 'highlights',
-                                    'type' => 'repeater',
-                                    'layout' => 'block',
-                                    'button_label' => 'Ajouter une carte',
-                                    'sub_fields' => [
-
-                                        [
-                                            'key' => 'field_be_header_mega_highlight_icon',
-                                            'label' => 'Icône',
-                                            'name' => 'icon_lumina',
-                                            'type' => 'select',
-                                            'ui' => 1,
-                                            'allow_null' => 1,
-                                            'return_format' => 'value',
-                                        ],
-
-                                        [
-                                            'key' => 'field_be_header_mega_highlight_title',
-                                            'label' => 'Titre',
-                                            'name' => 'title',
-                                            'type' => 'text',
-                                        ],
-
-                                        [
-                                            'key' => 'field_be_header_mega_highlight_description',
-                                            'label' => 'Description',
-                                            'name' => 'description',
-                                            'type' => 'textarea',
-                                            'rows' => 3,
-                                        ],
-
-                                        [
-                                            'key' => 'field_be_header_mega_highlight_link',
-                                            'label' => 'Lien (optionnel)',
-                                            'name' => 'link',
-                                            'type' => 'link',
-                                            'return_format' => 'array',
-                                        ],
-
-                                    ],
-                                ],
-
+                            [
+                                'field' => 'field_lumina_header_v2_nav_cta_enabled',
+                                'operator' => '==',
+                                'value' => '1',
                             ],
                         ],
-
                     ],
                 ],
 
@@ -235,8 +474,27 @@ class Header implements Registerable
             'position' => 'normal',
             'style' => 'default',
             'label_placement' => 'top',
+            'instruction_placement' => 'label',
             'active' => true,
-
+            'show_in_rest' => 0,
         ]);
+    }
+
+    /**
+     * Retourne les menus WordPress disponibles pour ACF.
+     *
+     * @return array<string, string>
+     */
+    private static function getWordPressMenus(): array
+    {
+        $choices = [];
+
+        $menus = wp_get_nav_menus();
+
+        foreach ($menus as $menu) {
+            $choices[(string) $menu->term_id] = $menu->name;
+        }
+
+        return $choices;
     }
 }

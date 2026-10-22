@@ -15,7 +15,7 @@ class Footer implements Registerable
             'fields' => [
 
                 [
-                    'key' => 'field_be_footer_tab_branding',
+                    'key' => 'field_lumina_footer_tab_branding',
                     'label' => 'Marque',
                     'name' => '',
                     'type' => 'tab',
@@ -23,7 +23,7 @@ class Footer implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_footer_logo',
+                    'key' => 'field_lumina_footer_logo',
                     'label' => 'Logo',
                     'name' => 'footer_logo',
                     'type' => 'image',
@@ -33,7 +33,7 @@ class Footer implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_footer_description',
+                    'key' => 'field_lumina_footer_description',
                     'label' => 'Description',
                     'name' => 'footer_description',
                     'type' => 'textarea',
@@ -41,9 +41,77 @@ class Footer implements Registerable
                     'new_lines' => 'br',
                     'placeholder' => 'Bâtir la confiance grâce à un signalement simple et sécurisé.',
                 ],
+                array(
+                    'key' => 'field_lumina_footer_contact',
+                    'label' => 'Contact',
+                    'name' => 'footer_contact',
+                    'aria-label' => '',
+                    'type' => 'group',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'layout' => 'block',
+                    'sub_fields' => array(
+                        [
+                            'key' => 'field_lumina_footer_contact_icon',
+                            'label' => 'Icône',
+                            'name' => 'icon_lumina',
+                            'type' => 'select',
+
+                            'instructions' => 'Sélectionnez une icône Lumina.',
+                            'ui' => 1,
+                            'allow_null' => 1,
+                            'return_format' => 'value',
+                            'required' => 1,
+                        ],
+                        array(
+                            'key' => 'field_lumina_footer_contact_description',
+                            'label' => 'Description',
+                            'name' => 'description',
+                            'aria-label' => '',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'maxlength' => '',
+                            'allow_in_bindings' => 0,
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                        ),
+                        array(
+                            'key' => 'field_lumina_footer_contact_tel',
+                            'label' => 'Tel',
+                            'name' => 'tel',
+                            'aria-label' => '',
+                            'type' => 'link',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'return_format' => 'array',
+                            'allow_in_bindings' => 0,
+                        ),
+                    ),
+                ),
 
                 [
-                    'key' => 'field_be_footer_tab_columns',
+                    'key' => 'field_lumina_footer_tab_columns',
                     'label' => 'Colonnes',
                     'name' => '',
                     'type' => 'tab',
@@ -51,7 +119,7 @@ class Footer implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_footer_columns',
+                    'key' => 'field_lumina_footer_columns',
                     'label' => 'Colonnes du footer',
                     'name' => 'footer_columns',
                     'type' => 'repeater',
@@ -61,7 +129,7 @@ class Footer implements Registerable
                     'sub_fields' => [
 
                         [
-                            'key' => 'field_be_footer_column_title',
+                            'key' => 'field_lumina_footer_column_title',
                             'label' => 'Titre de colonne',
                             'name' => 'title',
                             'type' => 'text',
@@ -70,7 +138,7 @@ class Footer implements Registerable
                         ],
 
                         [
-                            'key' => 'field_be_footer_column_type',
+                            'key' => 'field_lumina_footer_column_type',
                             'label' => 'Type de colonne',
                             'name' => 'type',
                             'type' => 'select',
@@ -84,7 +152,7 @@ class Footer implements Registerable
                         ],
 
                         [
-                            'key' => 'field_be_footer_column_links',
+                            'key' => 'field_lumina_footer_column_links',
                             'label' => 'Liens',
                             'name' => 'links',
                             'type' => 'repeater',
@@ -92,7 +160,7 @@ class Footer implements Registerable
                             'button_label' => 'Ajouter un lien',
                             'sub_fields' => [
                                 [
-                                    'key' => 'field_be_footer_column_link_item',
+                                    'key' => 'field_lumina_footer_column_link_item',
                                     'label' => 'Lien',
                                     'name' => 'link',
                                     'type' => 'link',
@@ -102,7 +170,7 @@ class Footer implements Registerable
                             'conditional_logic' => [
                                 [
                                     [
-                                        'field' => 'field_be_footer_column_type',
+                                        'field' => 'field_lumina_footer_column_type',
                                         'operator' => '==',
                                         'value' => 'links',
                                     ],
@@ -111,7 +179,7 @@ class Footer implements Registerable
                         ],
 
                         [
-                            'key' => 'field_be_footer_column_certifications',
+                            'key' => 'field_lumina_footer_column_certifications',
                             'label' => 'Certifications',
                             'name' => 'certifications',
                             'type' => 'repeater',
@@ -119,14 +187,14 @@ class Footer implements Registerable
                             'button_label' => 'Ajouter une certification',
                             'sub_fields' => [
                                 [
-                                    'key' => 'field_be_footer_cert_label',
+                                    'key' => 'field_lumina_footer_cert_label',
                                     'label' => 'Libellé',
                                     'name' => 'label',
                                     'type' => 'text',
                                     'placeholder' => 'ISO 27001',
                                 ],
                                 [
-                                    'key' => 'field_be_footer_cert_badge',
+                                    'key' => 'field_lumina_footer_cert_badge',
                                     'label' => 'Badge (image)',
                                     'name' => 'badge',
                                     'type' => 'image',
@@ -138,7 +206,7 @@ class Footer implements Registerable
                             'conditional_logic' => [
                                 [
                                     [
-                                        'field' => 'field_be_footer_column_type',
+                                        'field' => 'field_lumina_footer_column_type',
                                         'operator' => '==',
                                         'value' => 'certifications',
                                     ],
@@ -150,7 +218,7 @@ class Footer implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_footer_tab_bottom',
+                    'key' => 'field_lumina_footer_tab_bottom',
                     'label' => 'Barre inférieure',
                     'name' => '',
                     'type' => 'tab',
@@ -158,7 +226,7 @@ class Footer implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_footer_copyright',
+                    'key' => 'field_lumina_footer_copyright',
                     'label' => 'Copyright',
                     'name' => 'footer_copyright',
                     'type' => 'text',
@@ -166,7 +234,7 @@ class Footer implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_footer_legal_links',
+                    'key' => 'field_lumina_footer_legal_links',
                     'label' => 'Liens légaux',
                     'name' => 'footer_legal_links',
                     'type' => 'repeater',
@@ -174,7 +242,7 @@ class Footer implements Registerable
                     'button_label' => 'Ajouter un lien',
                     'sub_fields' => [
                         [
-                            'key' => 'field_be_footer_legal_link_item',
+                            'key' => 'field_lumina_footer_legal_link_item',
                             'label' => 'Lien',
                             'name' => 'link',
                             'type' => 'link',
@@ -184,7 +252,7 @@ class Footer implements Registerable
                 ],
 
                 [
-                    'key' => 'field_be_footer_social_links',
+                    'key' => 'field_lumina_footer_social_links',
                     'label' => 'Réseaux sociaux',
                     'name' => 'footer_social_links',
                     'type' => 'repeater',
@@ -192,7 +260,7 @@ class Footer implements Registerable
                     'button_label' => 'Ajouter un réseau',
                     'sub_fields' => [
                         [
-                            'key' => 'field_be_footer_social_platform',
+                            'key' => 'field_lumina_footer_social_platform',
                             'label' => 'Plateforme',
                             'name' => 'platform',
                             'type' => 'select',
@@ -208,7 +276,7 @@ class Footer implements Registerable
                             'required' => 1,
                         ],
                         [
-                            'key' => 'field_be_footer_social_url',
+                            'key' => 'field_lumina_footer_social_url',
                             'label' => 'URL',
                             'name' => 'url',
                             'type' => 'url',
