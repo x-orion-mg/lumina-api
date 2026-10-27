@@ -80,7 +80,6 @@ class HeaderTransformer
                 if ($type === 'mega_menu') {
                     return [
                         'type'        => 'mega_menu',
-                        'label'       => $menu['label'],
                         'menu_id'     => $menu['menu_id'],
                         'items'       => $menu['items'],
                         'mega_menu'   => self::megaMenu($item),
@@ -89,7 +88,6 @@ class HeaderTransformer
 
                 return [
                     'type'    => 'menu',
-                    'label'   => $menu['label'],
                     'menu_id' => $menu['menu_id'],
                     'items'   => $menu['items'],
                 ];
